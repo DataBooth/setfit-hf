@@ -1,0 +1,18 @@
+[dataset]
+# You can use plain relative path or file URI; both are supported by DuckDB.
+data_source = "data/ANZ.csv" # or file://data/ANZ.csv
+description_column = "txn_description"
+label_column = "merchant_code" # or any other column (consider "merchant_suburb", "merchant_state", "movement" for labels!)
+
+[train]
+few_shot_per_label = 8
+random_state = 42
+
+[model]
+model_name = "sentence-transformers/paraphrase-mpnet-base-v2"
+batch_size = 8
+num_epochs = 10
+model_cache_path = "setfit_model_anz.pkl"
+
+[evaluation]
+print_report = true
